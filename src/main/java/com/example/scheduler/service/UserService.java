@@ -1,6 +1,7 @@
 package com.example.scheduler.service;
 
 import com.example.scheduler.domain.User;
+import com.example.scheduler.dto.UserDto;
 import com.example.scheduler.repository.TestRepo;
 import com.example.scheduler.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -56,4 +57,9 @@ public class UserService {
         testRepo.insertUser("name");
 //        if(1==1) throw new RuntimeException("AAA");
     }
+
+//    public UserDto findUserAll(){
+//        List<User> userList = userRepository.findAll();
+//    }
+
 }

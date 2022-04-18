@@ -1,10 +1,7 @@
 package com.example.scheduler.domain;
 
 import com.querydsl.core.annotations.QueryProjection;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,21 +9,27 @@ import javax.persistence.*;
 @Entity
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
     private String name;
 
+    @Column(name = "age")
+    private Integer age;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
 
-    @Builder
-    @QueryProjection
-    public User(Long idx, String name, Team team) {
-        this.idx = idx;
-        this.name = name;
-        this.team = team;
+
+    public static User createUser(String name, Integer age, Team team) {
+        return new User().builder()
+                .name(name)
+                .age(age)
+                .team(team)
+                .build();
     }
 }

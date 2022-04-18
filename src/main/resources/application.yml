@@ -36,6 +36,12 @@ mybatis:
   mapper-locations: /mapper/**
 
 
+#쿼리 파라미터 log 출력
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+      multiline: true
 
 
 

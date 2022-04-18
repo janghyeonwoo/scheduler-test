@@ -10,49 +10,30 @@ import com.example.scheduler.repository.OrderRepository;
 import com.example.scheduler.repository.TeamRepository;
 import com.example.scheduler.repository.UserRepository;
 import com.example.scheduler.service.UserService;
-import com.example.scheduler.type.Member;
-import com.mysql.cj.log.Log;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.QueryModifiers;
-import com.querydsl.core.types.ExpressionUtils;
-import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import static com.example.scheduler.domain.QUser.user;
-import static com.example.scheduler.domain.QTeam.team;
-import static com.example.scheduler.domain.QOrder.order;
-
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 import javax.persistence.EntityManager;
-import javax.servlet.http.HttpServletResponse;
-import java.beans.Expression;
 import java.util.List;
+
+import static com.example.scheduler.domain.QOrder.order;
+import static com.example.scheduler.domain.QTeam.team;
+import static com.example.scheduler.domain.QUser.user;
+
 
 
 @SpringBootTest
@@ -99,15 +80,15 @@ class UserContollerTest {
         em.clear();
     }
 
-    @Test
-    void 조회테스트() throws Exception {
-        HttpServletResponse response = mockMvc.perform(get("/v1/mybatis"))
-                .andExpect(status().isOk())
-                .andReturn()
-                .getResponse();
-        String returnValue = ((MockHttpServletResponse) response).getContentAsString();
-        assertEquals("하모니",returnValue);
-    }
+//    @Test
+//    void 조회테스트() throws Exception {
+//        HttpServletResponse response = mockMvc.perform(get("/v1/mybatis"))
+//                .andExpect(status().isOk())
+//                .andReturn()
+//                .getResponse();
+//        String returnValue = ((MockHttpServletResponse) response).getContentAsString();
+//        assertEquals("하모니",returnValue);
+//    }
 
     @Test
     @Rollback(false)

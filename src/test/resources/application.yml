@@ -14,28 +14,34 @@ spring:
       transaction-isolation: TRANSACTION_READ_UNCOMMITTED
       pool-name: pool-jiniworld_demo
 
-
-  jpa:
-    hibernate:
-      ddl-auto: create
-    open-in-view: true
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-
-  output:
-    ansi:
-      enabled: always
-logging:
-  level:
-    org.hibernate.SQL: debug    # Logger
-    org.hibernate.type: trace   # Show Query Parameter
-
-mybatis:
-  mapper-locations: /mapper/**
-
-
-
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    open-in-view: true
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#
+#  output:
+#    ansi:
+#      enabled: always
+#logging:
+#  level:
+#    org.hibernate.SQL: debug    # Logger
+#    org.hibernate.type: trace   # Show Query Parameter
+#
+#mybatis:
+#  mapper-locations: /mapper/**
+#
+#
+##쿼리 파라미터 log 출력
+#decorator:
+#  datasource:
+#    p6spy:
+#      enable-logging: true
+#      multiline: true
+#
 
 

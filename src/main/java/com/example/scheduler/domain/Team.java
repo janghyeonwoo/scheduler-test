@@ -1,9 +1,6 @@
 package com.example.scheduler.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,7 +8,9 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
+@Builder
 public class Team {
     @Id
     @GeneratedValue
@@ -23,10 +22,11 @@ public class Team {
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     List<User> users = new ArrayList<>();
 
-    @Builder
-    public Team(Long id, String teamName) {
-        this.id = id;
-        this.teamName = teamName;
+    public static Team createTeam(String teamName) {
+        return new Team()
+                .builder()
+                .teamName(teamName)
+                .build();
     }
 
     @Override
